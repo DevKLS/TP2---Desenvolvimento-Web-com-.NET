@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "TP2 - Razor Pages";
+}
+
+<h1>TP2 - ASP.NET Core Razor Pages</h1>
+
+<p>Selecione os exercícios que deseja testar:</p>
+
+<div class="list-group">
+
+    <a asp-page="/CityManager/CreateCity"
+       class="list-group-item list-group-item-action">
+        Exercícios 1 a 4 - Cadastro de cidade
+    </a>
+
+    <a asp-page="/CityManager/CreateCountry"
+       class="list-group-item list-group-item-action">
+        Exercícios 5, 6 e 12 - Cadastro de país
+    </a>
+
+    <a asp-page="/CityManager/CreateMultipleCountries"
+       class="list-group-item list-group-item-action">
+        Exercício 7 - Cadastro de múltiplos países
+    </a>
+
+    <a asp-page="/CityManager/CityDetails"
+       asp-route-cityName="Rio"
+       class="list-group-item list-group-item-action">
+        Exercício 8 - Detalhes da cidade
+    </a>
+
+    <a asp-page="/CityManager/Index"
+       class="list-group-item list-group-item-action">
+        Exercício 9 - Lista de cidades
+    </a>
+
+    <a asp-page="/Files/SaveNote"
+       class="list-group-item list-group-item-action">
+        Exercícios 10 e 11 - Anotações
+    </a>
+
+</div>

@@ -1,0 +1,30 @@
+
+@page
+@model TP2_RazorPages.Pages.CityManager.CreateCityModel
+
+<h1>Cadastro de Cidade</h1>
+
+<form method="post">
+
+    <div>
+        <label asp-for="Input.CityName">Nome da cidade:</label>
+
+        <input asp-for="Input.CityName" />
+
+        <span asp-validation-for="Input.CityName"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit">Cadastrar</button>
+
+</form>
+
+@if (Model.SubmittedCity != null)
+{
+<h3>Cidade cadastrada:</h3>
+<p>@Model.SubmittedCity</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

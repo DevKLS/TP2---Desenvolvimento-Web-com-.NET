@@ -1,0 +1,36 @@
+
+@page
+@model TP2_RazorPages.Pages.CityManager.CreateCountryModel
+
+<h1>Cadastro de País</h1>
+
+<form method="post">
+
+    <div>
+        <label asp-for="Input.CountryName">Nome do país:</label>
+        <input asp-for="Input.CountryName" />
+        <span asp-validation-for="Input.CountryName"
+              class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Input.CountryCode">Código do país:</label>
+        <input asp-for="Input.CountryCode" />
+        <span asp-validation-for="Input.CountryCode"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit">Cadastrar País</button>
+
+</form>
+
+@if (Model.RegisteredCountry != null)
+{
+<h3>País cadastrado:</h3>
+<p>Nome: @Model.RegisteredCountry.CountryName</p>
+<p>Código: @Model.RegisteredCountry.CountryCode</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

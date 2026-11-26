@@ -1,0 +1,48 @@
+
+@page
+@model TP2_RazorPages.Pages.CityManager.CreateMultipleCountriesModel
+
+<h1>Cadastro de Múltiplos Países</h1>
+
+<form method="post">
+
+    @for (int i = 0; i < Model.Countries.Count; i++)
+    {
+    <fieldset>
+        <legend>País @(i + 1)</legend>
+
+        <div>
+            <label asp-for="Countries[i].CountryName">
+                Nome do país:
+            </label>
+
+            <input asp-for="Countries[i].CountryName" />
+        </div>
+
+        <div>
+            <label asp-for="Countries[i].CountryCode">
+                Código do país:
+            </label>
+
+            <input asp-for="Countries[i].CountryCode" />
+        </div>
+    </fieldset>
+    }
+
+    <button type="submit">Cadastrar todos os países</button>
+
+</form>
+
+@if (Model.RegisteredCountries.Count > 0)
+{
+<h2>Países cadastrados</h2>
+
+<ul>
+    @foreach (var country in Model.RegisteredCountries)
+        {
+    <li>
+        @country.CountryName - @country.CountryCode
+    </li>
+        }
+</ul>
+}

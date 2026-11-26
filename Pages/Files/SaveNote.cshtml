@@ -1,0 +1,88 @@
+@page
+@model TP2_RazorPages.Pages.Files.SaveNoteModel
+
+@{
+    ViewData["Title"] = "Salvar Anotações";
+}
+
+<h1>Salvar Anotações</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Input.Content" class="form-label">
+            Digite sua anotação:
+        </label>
+
+        <textarea asp-for="Input.Content"
+                  class="form-control"
+                  rows="5"></textarea>
+
+        <span asp-validation-for="Input.Content"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Salvar anotação
+    </button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.SavedFileName))
+{
+<div class="alert alert-success mt-3">
+    <p>Anotação salva com sucesso!</p>
+
+    <p>Arquivo: @Model.SavedFileName</p>
+
+    <a asp-page-handler="Download"
+       asp-route-file="@Model.SavedFileName">
+        Baixar anotação
+    </a>
+</div>
+}
+
+<hr />
+
+<h2>Anotações salvas</h2>
+
+@if (Model.Files.Count == 0)
+{
+<p>Nenhuma anotação encontrada.</p>
+}
+else
+{
+<ul>
+    @foreach (var file in Model.Files)
+        {
+    <li class="mb-2">
+        @file
+
+        <a asp-page-handler="View"
+           asp-route-file="@file">
+            Visualizar
+        </a>
+
+        |
+
+        <a asp-page-handler="Download"
+           asp-route-file="@file">
+            Baixar
+        </a>
+    </li>
+        }
+</ul>
+}
+
+@if (Model.SelectedContent != null)
+{
+<hr />
+
+<h3>Conteúdo do arquivo</h3>
+
+<p>@Model.SelectedFileName</p>
+
+<pre class="border rounded p-3">@Model.SelectedContent</pre>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
